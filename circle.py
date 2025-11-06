@@ -50,9 +50,9 @@ class Circle:
 
     def translate(self, dx: float, dy: float) -> None:
         if not isinstance(dx, (int, float)):
-            raise TypeError("dx måste vara ett tal")
+            raise TypeError("dx has to be a number or decimal")
         if not isinstance(dy, (int, float)):
-            raise TypeError("dy måste vara ett tal")
+            raise TypeError("dy has to be a number or decimal")
 
         # move the centrum
         self._x += dx
