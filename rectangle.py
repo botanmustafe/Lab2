@@ -56,35 +56,29 @@ class Rectangle:        # rectangle with center (x,y) width and height
             return False
         return {self._width, self._height} == {other._width, other._height}
 
-    # get area from "other" if it exists
-    def other_area(self, other):
-        return other.area if hasattr(other, "area") else NotImplemented
-
-    def __lt__(self, other) -> bool:   # true if the rectangles area is smaller than the other ones
-        oa = self.other_area(other)
-        if oa is NotImplemented:
+    # true if the rectangles area is smaller than the other ones
+    def __lt__(self, other) -> bool:
+        if not isinstance(other, Rectangle):
             return NotImplemented
-        return self.area < oa
+        return self.area < other.area
 
     # true if the rectangles area is smaller than or equal to the other ones
     def __le__(self, other) -> bool:
-        oa = self.other_area(other)
-        if oa is NotImplemented:
+        if not isinstance(other, Rectangle):
             return NotImplemented
-        return self.area <= oa
+        return self.area <= other.area
 
-    def __gt__(self, other) -> bool:    # true if the rectangles area is larger than the other ones
-        oa = self.other_area(other)
-        if oa is NotImplemented:
+    # true if the rectangles area is larger than the other ones
+    def __gt__(self, other) -> bool:
+        if not isinstance(other, Rectangle):
             return NotImplemented
-        return self.area > oa
+        return self.area > other.area
 
     # true if the rectangles area is larger than or equal to the other ones
     def __ge__(self, other) -> bool:
-        oa = self.other_area(other)
-        if oa is NotImplemented:
+        if not isinstance(other, Rectangle):
             return NotImplemented
-        return self.area >= oa
+        return self.area >= other.area
 
     # textrepresentation
 
